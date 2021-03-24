@@ -2,6 +2,25 @@
   #FONTS
 \*------------------------------------*/
 
+@font-face {
+    font-family: "HK Grotesk Web";
+    font-weight: 200;
+    src: url("..//fonts/hkgrotesk-light-webfont.woff2") format("woff2"),
+    url("..//fonts/hkgrotesk-light-webfont.woff") format("woff");
+}
+@font-face {
+    font-family: "HK Grotesk Web";
+    font-weight: 400;
+    src: url("..//fonts/hkgrotesk-regular-webfont.woff2") format("woff2"),
+    url("..//fonts/hkgrotesk-regular-webfont.woff") format("woff");
+}
+@font-face {
+    font-family: "HK Grotesk Web";
+    font-weight: 600;
+    src: url("..//fonts/hkgrotesk-medium-webfont.woff2") format("woff2"),
+    url("..//fonts/hkgrotesk-medium-webfont.woff") format("woff");
+}
+
 /*------------------------------------*\
   #GENERIC
 \*------------------------------------*/
@@ -15,8 +34,8 @@
 html {
     font-size: 16px;
     line-height: 1.5;
-    font-family: Helvetica, arial, sans-serif;
-    color: #111;
+    font-family: "HK Grotesk Web", sans-serif;
+    color: #202024;
     box-sizing: border-box;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
@@ -28,6 +47,14 @@ html {
     box-sizing: inherit;
 }
 
+@media (min-width: 768px) {
+    html {
+        font-size: 20px;
+        line-height: 1.6;
+    }
+
+    
+}
 /*
  * Remove text-shadow in selection highlight:
  * https://twitter.com/miketaylr/status/12228805301
@@ -36,7 +63,7 @@ html {
  */
 
 ::selection {
-    background: #e85e00;
+    background: #5051db;
     color: white;
     text-shadow: none;
 }
@@ -61,6 +88,11 @@ img {
     ---
     Default markup for typographic elements
 */
+h1,
+h2,
+h3 {
+    font-weight: 200;
+}
 
 h1 {
     font-size: 36px;
@@ -136,18 +168,18 @@ hr {
 }
 
 a {
-    color: RoyalBlue;
+    color: #5051db;
     transition: all .1s ease-in-out;
 }
 
 a:visited,
 a:active {
-    color: BlueViolet;
+    color: #5051db;
 }
 
 a:hover,
 a:focus {
-    color: Crimson;
+    color: #3e3e8a;
 }
 
 /*------------------------------------*\
@@ -178,6 +210,11 @@ a:focus {
         padding-right: 48px;
     }
 
+    .o-row--md {
+        padding-top: 48px;
+        padding-bottom: 24px;
+    }
+
     .o-row--lg {
         padding-top: 72px;
         padding-bottom: 48px;
@@ -194,7 +231,7 @@ a:focus {
     margin-left: auto;
     margin-right: auto;
     width: 100%;
-    max-width: 90em; /* 90 * 16px = 1440px */
+    max-width: 56.4em; /* 90 * 16px = 1128px */
 }
 
 /*
@@ -314,13 +351,140 @@ a:focus {
     align-content: space-between;
 }
 
+/*
+    Objects: section
+    ---
+    Creates vertical whitespace between adjacent sections inside a row
+*/
+
+.o-section {
+    display: flow-root;
+}
+
+.o-section + .o-section {
+    margin-top: 24px;
+}
+
+@media (min-width: 768px) {
+    .o-section--lg + .o-section--lg,
+    .o-section--xl + .o-section--xl {
+        margin-top: 48px;
+    }
+}
+
+@media (min-width: 1200px) {
+    .o-section--xl + .o-section--xl {
+        margin-top: 72px;
+    }
+}
+
+/*
+    Objects: List
+    ---
+    Small reusable object to remove default list styling from lists
+*/
+.o-list-reset {
+    list-style: none;
+    padding: 0;
+}
 /*------------------------------------*\
   #COMPONENTS
 \*------------------------------------*/
+/*
+    Component: header
+    ---
+    Main header of the website
+*/
+
+.c-header__nav {
+    display: none;
+}
+
+@media (min-width: 992px) {
+    .c-header {
+
+    }
+
+    .c-header__nav {
+        display: block;
+    }
+}
+
+/*
+    Component: Logo
+    ---
+    Website main logo
+*/
+
+.c-logo {
+    height: 32px;
+}
+
+.c-logo__symbol {
+    height: 100%;
+}
+
+@media (min-width: 768px) {
+    .c-logo {
+        height: 40px;
+    }
+}
+
+/*
+    Component: Nav
+    ---
+    Main navigation of the site
+*/
+
+.c-nav {
+    font-size: 18px;
+    line-height: 24px;
+}
+
+.c-nav--meta {
+    font-size: 16px;
+}
+.c-nav__link {
+    text-decoration: none;
+    padding: 8px 0;
+    display: block;
+}
+
+.c-nav__link,
+.c-nav__link:visited,
+.c-nav__link:active {
+    color: #202024;
+}
+.c-nav__link--meta,
+.c-nav__link--meta:visited,
+.c-nav__link--meta:active {
+    color: #6C6C75;
+}
+.is-active .c-nav__link,
+.c-nav__link:hover,
+.c-nav__link:focus {
+    color: #5051db;
+}
+
+@media (min-width: 768px) {
+    .c-nav__list {
+        display: flex;
+        gap: 32px;
+    }
+}
 
 /*------------------------------------*\
   #UTILITIES
 \*------------------------------------*/
+/*
+    Utilities: spacing
+    ---
+    Utility classes to put specific margins and paddings onto elements
+*/
+
+.u-pt-clear {
+    padding-top: 0 !important;
+}
 
 /*
     Utilities: max-width
